@@ -13,8 +13,24 @@ public class Paddle extends GameObject{
 
     public void frameUpdate() {
         int moveDirection = (JavaPongApp.isSPressed() ? 1 : 0) - (JavaPongApp.isWPressed() ? 1 : 0);
-        this.y += moveDirection * 10;
+        ySpeed = moveDirection * 15;
+
+        //Limit the paddle to the screen
+        if (((y)+ySpeed)+15 < 0) {
+            ySpeed = 0;
+        }
+
+        if (((y + height)+ySpeed)-15 > 600) {
+            ySpeed = 0;
+        }
+
+        y += ySpeed;
         
+    }
+
+
+    public int getYSpeed() {
+        return ySpeed;
     }
 
 

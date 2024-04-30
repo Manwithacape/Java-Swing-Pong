@@ -8,7 +8,7 @@ public class JavaPongApp {
     // Core Data structure for the game
     public static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
     public static int steps = 0;
-    public static GameObject playerPaddle;
+    public static Paddle playerPaddle;
 
     private static volatile boolean wPressed = false;
     public static boolean isWPressed() {
@@ -71,7 +71,7 @@ public class JavaPongApp {
         // Create a new JFrame
         JFrame gameFrame = new JFrame("Java Pong");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameFrame.setSize(800, 600);
+        gameFrame.setSize(800, 700);
 
 
         // Add a new Ball to the game

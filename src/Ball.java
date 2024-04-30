@@ -27,10 +27,13 @@ public class Ball extends GameObject {
 
 
         //if ball hits the top or bottom of the room bounce 
-        if (this.y+ySpeed < 0 || this.y+ySpeed > 600 - this.height) {
-            this.ySpeed += r.nextInt(3) - 2; // add a random number between -1 and 1 to the ySpeed
+        if (this.y+ySpeed < 0) {
             this.ySpeed = -this.ySpeed;
-            
+        }
+
+        // if the ball hits the bottom of the room 
+        if ((this.y+this.height)+ySpeed >= 600) {
+            this.ySpeed = -this.ySpeed;
         }
 
         //if the ball hits the back wall bounce
@@ -40,9 +43,14 @@ public class Ball extends GameObject {
 
         // if the ball hits the player paddle bounce
         if (intersect(JavaPongApp.playerPaddle)) {
-            this.xSpeed = -this.xSpeed;
-            this.ySpeed = -this.ySpeed;
-            this.ySpeed += r.nextInt(3) - 2; // add a random number between -1 and 1 to the ySpeed
+            if (JavaPongApp.playerPaddle.getYSpeed() != 0) {
+                this.ySpeed += JavaPongApp.playerPaddle.getYSpeed()/4; 
+            } else {
+                this.ySpeed += -(int)Math.signum((double) this.ySpeed);
+            }
+            //Give it some english haha
+            this.xSpeed *= -1;
+            //this.ySpeed += r.nextInt(3) - 2; // add a random number between -1 and 1 to the ySpeed
         }
 
 

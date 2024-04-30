@@ -17,7 +17,7 @@ public class GameSurface extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JavaPongApp.steps += 1;
-                System.out.println("Step " + JavaPongApp.steps);
+                //System.out.println("Step " + JavaPongApp.steps);
                 for (GameObject obj: JavaPongApp.gameObjects) {
                     obj.frameUpdate();
                 }
